@@ -7,9 +7,11 @@ import Categoria from "../../../models/categoria/Categoria";
 
 const FormProdutos = () => {
   const navigate = useNavigate();
+
   const [produto, setProduto] = useState<Produto>({} as Produto);
   const [categorias, setCategorias] = useState<Categoria[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const { id } = useParams<{ id: string }>();
 
   async function buscarPorId(id: string) {
@@ -63,28 +65,31 @@ const FormProdutos = () => {
       return;
     }
   
-    // Garantir objeto de categoria completo
     const produtoComCategoria = {
       ...produto,
-      categoria: { id: Number(produto.categoria) }
+      categoria: { id: Number(produto.categoria) },
     };
   
     try {
       if (id !== undefined) {
-        await atualizar(`/produtos/${id}`, produtoComCategoria, setProduto);
+        // Atualização
+        await atualizar(`/produtos`, produtoComCategoria, setProduto);
         alert("Produto atualizado com sucesso!");
       } else {
+        // Cadastro
         await cadastrar("/produtos", produtoComCategoria, setProduto);
         alert("Produto cadastrado com sucesso!");
       }
+  
+      setIsLoading(false);
       retornar();
     } catch (error: any) {
-      console.error("Erro no cadastro:", error);
+      console.error("Erro:", error);
       alert(error.response?.data?.message || "Erro ao salvar produto");
-    } finally {
       setIsLoading(false);
     }
   }
+  
 
   return (
     <div className="fixed inset-0 flex justify-center items-center bg-opacity-0">
@@ -129,7 +134,7 @@ const FormProdutos = () => {
             <select
               name="categoria"
               className="border-2 border-slate-700 rounded-md p-3"
-              value={produto.categoria?.id} 
+              value={produto.categoria?.id}
               onChange={atualizarEstado}
             >
               <option value="">Selecione a categoria</option>

@@ -18,7 +18,7 @@ function CardCategoria({ categoria }: CardCategoriaProps) {
         </div>
         <div className="flex gap-4" >
           <Link
-            to={`/categorias`}
+            to={`/editarcategoria/${categoria.id}`}
             className="text-white bg-lime-700 hover:bg-lime-900 
                     py-1 px-1 rounded"
           >

@@ -45,21 +45,19 @@ const FormCategorias = () => {
 
     if (id !== undefined) {
       try {
-        await atualizar(`/categorias/${id}`, categoria, setCategoria);
-        alert("Categoria atualizada com sucesso!");
+        await atualizar(`/categorias`, categoria, setCategoria);
+        alert("A categoria foi atualizada com sucesso!");
       } catch (error: any) {
-        if (error.toString().includes("403")) {
-          alert("Erro ao atualizar a categoria.");
-        }
+        alert("Erro ao atualizar a categoria.");
+        console.log(error);
       }
     } else {
       try {
-        await cadastrar("/categorias", categoria, setCategoria);
-        alert("Categoria cadastrada com sucesso!");
+        await cadastrar(`/categorias`, categoria, setCategoria);
+        alert("A categoria foi cadastrada com sucesso!");
       } catch (error: any) {
-        if (error.toString().includes("403")) {
-          alert("Erro ao cadastrar a categoria.");
-        }
+        alert("Erro ao cadastrar a categoria.");
+        console.log(error);
       }
     }
 
