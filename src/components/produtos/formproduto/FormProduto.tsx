@@ -65,19 +65,12 @@ const FormProdutos = () => {
       return;
     }
   
-    const produtoComCategoria = {
-      ...produto,
-      categoria: { id: Number(produto.categoria) },
-    };
-  
     try {
       if (id !== undefined) {
-        // Atualização
-        await atualizar(`/produtos`, produtoComCategoria, setProduto);
+        await atualizar(`/produtos`, produto, setProduto);
         alert("Produto atualizado com sucesso!");
       } else {
-        // Cadastro
-        await cadastrar("/produtos", produtoComCategoria, setProduto);
+        await cadastrar("/produtos", produto, setProduto);
         alert("Produto cadastrado com sucesso!");
       }
   
