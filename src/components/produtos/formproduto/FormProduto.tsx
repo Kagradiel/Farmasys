@@ -55,29 +55,35 @@ const FormProdutos = () => {
   async function gerarNovoProduto(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
     setIsLoading(true);
-
-    if (id !== undefined) {
-      try {
-        await atualizar(`/produtos/${id}`, produto, setProduto);
-        alert("Produto atualizado com sucesso!");
-      } catch (error: any) {
-        if (error.toString().includes("403")) {
-          alert("Erro ao atualizar o produto.");
-        }
-      }
-    } else {
-      try {
-        await cadastrar("/produtos", produto, setProduto);
-        alert("Produto cadastrado com sucesso!");
-      } catch (error: any) {
-        if (error.toString().includes("403")) {
-          alert("Erro ao cadastrar o produto.");
-        }
-      }
+  
+    // Validações
+    if (!produto.nome || !produto.preco || !produto.categoria) {
+      alert("Preencha todos os campos");
+      setIsLoading(false);
+      return;
     }
-
-    setIsLoading(false);
-    retornar();
+  
+    // Garantir objeto de categoria completo
+    const produtoComCategoria = {
+      ...produto,
+      categoria: { id: Number(produto.categoria) }
+    };
+  
+    try {
+      if (id !== undefined) {
+        await atualizar(`/produtos/${id}`, produtoComCategoria, setProduto);
+        alert("Produto atualizado com sucesso!");
+      } else {
+        await cadastrar("/produtos", produtoComCategoria, setProduto);
+        alert("Produto cadastrado com sucesso!");
+      }
+      retornar();
+    } catch (error: any) {
+      console.error("Erro no cadastro:", error);
+      alert(error.response?.data?.message || "Erro ao salvar produto");
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
