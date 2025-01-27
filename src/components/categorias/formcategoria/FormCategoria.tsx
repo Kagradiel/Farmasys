@@ -14,7 +14,7 @@ const FormCategorias = () => {
 
   async function buscarPorId(id: string) {
     try {
-      await buscar(`/categorias/${id}`, setCategoria, {});
+      await buscar(`/categorias/${id}`, setCategoria);
     } catch (error: any) {
       if (error.toString().includes("403")) {
         alert("Erro ao buscar a categoria.");
