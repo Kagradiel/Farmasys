@@ -2,7 +2,8 @@ import Categoria from "../categoria/Categoria";
 
 export default interface Produto{
     id: number;
-    nomeDoProduto: string;
-    price: number;
+    nome: string;
+    preco: number;
+    foto: string;
     categoria: Categoria;
 }

@@ -1,4 +1,5 @@
 import FundoHome from "../../assets/images/farmasys.png";
+import ListaCategorias from "../../components/categorias/listacategoria/ListaCategoria";
 
 function Home() {
   return (
@@ -34,7 +35,6 @@ function Home() {
         
       </section>
 
-        Produtos aqui
     </>
   );
 }
