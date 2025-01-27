@@ -4,7 +4,6 @@
     padding:5px;
     border:1px solid #d7d7d7;
     background:transparent;
-    
 }
 
 .bg-menu{
@@ -31,12 +30,14 @@
 
 .menu-interno{
     height: 420px;
+    opacity: 80%;
+    
 }
 
 @media screen and (min-height: 700px) 
 {
     .menu-interno{
-        height: 60dvh;
+        height: 40dvh;
     }
     
 }
