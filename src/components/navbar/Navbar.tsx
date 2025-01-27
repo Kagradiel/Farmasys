@@ -17,7 +17,9 @@ function Navbar() {
           </Link>
 
           <div className="flex gap-4 text-base font-light items-center">
-            Produtos
+            <Link to="/produtos" className="hover:underline">
+              Produtos
+            </Link>
             <Link to="/categorias" className="hover:underline">
               Categorias
             </Link>

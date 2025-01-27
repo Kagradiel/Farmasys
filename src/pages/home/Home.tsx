@@ -1,5 +1,6 @@
 import FundoHome from "../../assets/images/farmasys.png";
-import ListaCategorias from "../../components/categorias/listacategoria/ListaCategoria";
+import ListaProdutos from "../../components/produtos/listaproduto/ListaProduto";
+import ModalPostagem from "../../components/produtos/modalproduto/ModalProduto";
 
 function Home() {
   return (
@@ -16,7 +17,7 @@ function Home() {
 
             <div className="flex justify-around gap-4">
               <div className="flex justify-around gap-4">
-                Adicionar produto
+                <ModalPostagem/>
               </div>
             </div>
 
@@ -34,6 +35,8 @@ function Home() {
 
         
       </section>
+
+      <ListaProdutos/>
 
     </>
   );
