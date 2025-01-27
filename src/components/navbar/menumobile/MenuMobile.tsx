@@ -21,7 +21,7 @@ const Menu = () => {
         className=".popup-content"
       >
         <div
-          className="menu menu-interno md:hidden bg-lime-700 bg-opacity-45 text-white backdrop-blur-lg 
+          className="menu menu-interno md:hidden bg-lime-700 text-white backdrop-blur-lg 
                    w-[90vw] left-5 sm:left-7 top-20  rounded-[15px] flex flex-col content-center 
                   justify-between py-10 px-5 gap-15 h-[60dvh] text-base fixed font-extralight mt-3"
         >
